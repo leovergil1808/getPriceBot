@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ccxt": "^1.76.61"
-  }
+    "ccxt": "^1.76.61",
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.2.3"
+  },
+  "type": "module"
 }
