@@ -67,7 +67,7 @@ let main = async () => {
         const prices = await getPrice(coins)
         const result = await updateCurrentPrice(prices, headersList)
         console.log(result);
-    }, 5000);
+    }, 2000);
 }
 
 main();
