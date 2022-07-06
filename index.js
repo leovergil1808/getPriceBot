@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import ccxt from 'ccxt';
 import formData from 'form-data';
 
-const baseEndPoint = 'http://localhost/autoTradeBot/api'
-// const baseEndPoint = 'https://quandayne.com/biboBot/api'
+// const baseEndPoint = 'http://localhost/autoTradeBot/api'
+const baseEndPoint = 'https://quandayne.com/biboBot/api'
 
 let getCoins = async (headersList) => {
     let result = []
@@ -43,14 +43,14 @@ let updateCurrentPrice = async (prices, headersList) => {
     let body = new formData();
 
     body.append('data', JSON.stringify(prices));
-    console.time("timer1");
     const response = await fetch(`${baseEndPoint}/updateCurrentPrice`, {
         method: "POST",
         body: body,
         headers: headersList,
         time: true
-    }).then((res) => res.json())
-    console.timeEnd("timer1");
+    }).then((res) => res.json()).catch((error) => {
+        console.log(error)
+    });
     return response
 }
 
@@ -66,7 +66,7 @@ let main = async () => {
         const prices = await getPrice(coins)
         const result = await updateCurrentPrice(prices, headersList)
         console.log(result);
-    }, 3000);
+    }, 1500);
 }
 
 main();
