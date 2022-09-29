@@ -24,7 +24,8 @@ let getPrice = async (coins) => {
 
 	if (coins == undefined || Object.keys(coins).length == 0) return result
 
-	const exchange = new ccxt.huobi();
+	const exchange = new ccxt.bybit();
+	exchange.timeout = 5000
 	const response = await exchange.fetchTickers(Object.keys(coins))
 	for (const symbol in response) {
 		const item = {
@@ -54,6 +55,13 @@ let updateCurrentPrice = async (prices, headersList) => {
 	return response
 }
 
+function calcTime(city, offset) {
+	var b = new Date()
+	var utc = b.getTime() + (b.getTimezoneOffset() * 60000);
+	var nd = new Date(utc + (3600000 * offset));
+	return "Time in " + city + " is " + nd.toLocaleString();
+
+}
 let main = async () => {
 	const headersList = {
 		"Accept": "application/json",
@@ -66,8 +74,14 @@ let main = async () => {
 		const prices = await getPrice(coins)
 		const result = await updateCurrentPrice(prices, headersList)
 		console.log(result);
+		console.log(calcTime('japan', '+9'))
 	}, 1500);
 }
 
-main();
+
+try {
+	main();
+} catch (error) {
+	main();
+}
 
