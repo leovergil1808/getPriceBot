@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import ccxt from 'ccxt';
 import formData from 'form-data';
+import cluster from 'cluster';
 
 // const baseEndPoint = 'http://localhost/autoTradeBot/api'
 const baseEndPoint = 'https://quandayne.com/bibobot/api'
@@ -79,9 +80,16 @@ let main = async () => {
 }
 
 
-try {
-	main();
-} catch (error) {
-	main();
+
+if (cluster.isMaster) {
+	cluster.fork();
+
+	cluster.on('exit', function (worker, code, signal) {
+		cluster.fork();
+	});
+}
+
+if (cluster.isWorker) {
+	main()
 }
 
