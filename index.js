@@ -26,7 +26,6 @@ let getPrice = async (coins) => {
 	if (coins == undefined || Object.keys(coins).length == 0) return result
 
 	const exchange = new ccxt.bybit();
-	exchange.timeout = 5000
 	const response = await exchange.fetchTickers(Object.keys(coins))
 	for (const symbol in response) {
 		const item = {
@@ -76,7 +75,7 @@ let main = async () => {
 		const result = await updateCurrentPrice(prices, headersList)
 		console.log(result);
 		console.log(calcTime('japan', '+9'))
-	}, 1500);
+	}, 1300);
 }
 
 
