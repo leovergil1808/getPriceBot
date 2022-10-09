@@ -3,7 +3,7 @@ import ccxt from 'ccxt';
 import formData from 'form-data';
 import cluster from 'cluster';
 
-// const baseEndPoint = 'http://localhost/autoTradeBot/api'
+// const baseEndPoint = 'http://localhost/bibobot/api'
 const baseEndPoint = 'https://quandayne.com/bibobot/api'
 
 let getCoins = async (headersList) => {
@@ -56,16 +56,16 @@ let updateCurrentPrice = async (prices, headersList) => {
 }
 
 function calcTime(city, offset) {
-	var b = new Date()
-	var utc = b.getTime() + (b.getTimezoneOffset() * 60000);
-	var nd = new Date(utc + (3600000 * offset));
+	const b = new Date()
+	const utc = b.getTime() + (b.getTimezoneOffset() * 60000);
+	const nd = new Date(utc + (3600000 * offset));
 	return "Time in " + city + " is " + nd.toLocaleString();
 
 }
 let main = async () => {
 	const headersList = {
 		"Accept": "application/json",
-		"Authorization": "Bearer 71|LRfR9vvJr3FKAYK4cJSs0Er7VKAz390Qk1eEz0VI",
+		"Authorization": "Bearer 92|4glQRIgRnjsq8yMQXFTxGKqYAY4IvAp6BA4Pzzcs",
 	}
 
 	const coins = await getCoins(headersList)
