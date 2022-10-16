@@ -65,7 +65,7 @@ function calcTime(city, offset) {
 let main = async () => {
 	const headersList = {
 		"Accept": "application/json",
-		"Authorization": "Bearer 92|4glQRIgRnjsq8yMQXFTxGKqYAY4IvAp6BA4Pzzcs",
+		"Authorization": "Bearer 98|04wOGPHXBOnNpefkmVJbWu0p7rp7bQbojo7d8GhE",
 	}
 
 	const coins = await getCoins(headersList)
