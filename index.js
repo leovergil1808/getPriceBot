@@ -74,7 +74,7 @@ let main = async () => {
 		const prices = await getPrice(coins)
 		const result = await updateCurrentPrice(prices, headersList)
 		console.log(result);
-		console.log(calcTime('japan', '+9'))
+		console.log(calcTime('japan', '+9') + " " + baseEndPoint)
 	}, 1300);
 }
 
