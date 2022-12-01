@@ -25,6 +25,10 @@ let getPrice = async (coins) => {
 
 	if (coins == undefined || Object.keys(coins).length == 0) return result
 
+	/**
+	 * coin không thể lấy giá: 
+	 *  SHIB/USDT
+	 */
 	const exchange = new ccxt.bybit();
 	const response = await exchange.fetchTickers(Object.keys(coins))
 	for (const symbol in response) {
