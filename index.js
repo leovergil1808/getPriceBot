@@ -4,7 +4,7 @@ import formData from 'form-data';
 import cluster from 'cluster';
 
 // const baseEndPoint = 'http://localhost/bibobot/api'
-const baseEndPoint = 'http://14.225.205.27//bibobot/api'
+const baseEndPoint = 'http://14.225.205.27/bibobot/api'
 
 let getCoins = async (headersList) => {
 	let result = []
